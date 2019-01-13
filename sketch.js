@@ -74,15 +74,24 @@ function gameOver() {
   }
 }
 
+var ans12;
+
 function mousePressed() {
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; j++) {
       if (grid[i][j].contains(mouseX, mouseY)) {
-        grid[i][j].reveal();
+        if (!grid[i][j].bee) {
+          var num = floor(random(questions.length));
+          console.log("Question:", num + 1);
+          do {
+            ans12 = prompt(questions[num]);
+          } while (!ans12);
+          if (ans12) grid[i][j].reveal();
+          console.log("Answer:", ans12);
+          questions.splice(num, 1);
 
-        // if (grid[i][j].bee) {
-        //   gameOver();
-        // }
+          //  TODO: pop up question
+        }
       }
     }
   }
