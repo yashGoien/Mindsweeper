@@ -73,7 +73,8 @@ function gameOver() {
 }
 
 var ans12;
-
+var score=0;
+var inc=1;
 function mousePressed() {
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; j++) {
@@ -93,7 +94,9 @@ function mousePressed() {
           var span = document.getElementsByClassName("close")[0];
 
           // When the user clicks on the button, open the modal
+          if(document.getElementById('login').style.display=="none"){
           modal.style.display = "block";
+        }
           // When the user clicks on <span> (x), close the modal
           span.onclick = function() {
             modal.style.display = "none";
@@ -118,12 +121,20 @@ function mousePressed() {
             }
           };
           // } while (!ans12);
-          if (ans12) grid[i][j].reveal();
+          if (ans12&&(document.getElementById('login').style.display=="none")) 
+            {grid[i][j].reveal();
+              score=score+inc;
+            }if(document.getElementById('login').style.display=="block") {
+  console.log('Login Page')
+}
           console.log("Answer:", ans12);
+          document.getElementById("score").innerHTML= score;
           questions.splice(num, 1);
         }
         if (grid[i][j].bee) {
           console.log("Hit Mine");
+          score=score-5;
+          document.getElementById("score").innerHTML=score;         
           grid[i][j].reveal();
         }
       }
@@ -133,13 +144,20 @@ function mousePressed() {
 
 function draw() {
   background(255);
-
+//do not display game when user is logged out
+if(document.getElementById('login').style.display=="block") {
+  console.log('Login Page')
+}
+//display game only when user is logged in
+else{
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; j++) {
       grid[i][j].show();
     }
   }
 }
+}
+
 
 hashCode = function(answer) {
   return s.split("").reduce(function(a, b) {
@@ -153,3 +171,15 @@ function popup() {
   var popup = document.getElementById("myPopup");
   popup.classList.toggle("show");
 }
+
+//to push data to the database
+const name=document.getElementById("submitButton");
+name.addEventListener("click", saveToList);
+function saveToList() {
+var storeData = new Firebase('https://mindsweeper-92ffc.firebaseio.com/');  
+const email =document.getElementById('email_field').value   
+    storeData.push({
+        score:score,
+        email:email
+    });
+};

@@ -1,4 +1,7 @@
 /* The Modal (background) */
+* {
+  font-family: helvetica;
+}
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -34,4 +37,34 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.scoreCard {
+  float: right;
+  margin: 20px;
+}
+.submitBtn {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  -webkit-box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.3vw;
+  background-color: #3b3e37;
+}
+.login {
+  width: 40%;
+  align-items: center;
+
+  margin: 50px;
+    -webkit-box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+padding: 20px;
+border-radius: 10px;
+
 }
