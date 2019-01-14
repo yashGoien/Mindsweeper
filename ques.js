@@ -8,5 +8,15 @@ var questions = [
   "ques7",
   "ques8",
   "ques9",
-  "ques10"
+  "ques10",
+  "ques11",
+  "ques12",
+  "ques13",
+  "ques14",
+  "ques15",
+  "ques16",
+  "ques17",
+  "ques18",
+  "ques19",
+  "ques20"
 ];

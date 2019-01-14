@@ -52,9 +52,7 @@ function setup() {
 
     var j = choice[1];
 
-    // Deletes that spot so it's no longer an option
-
-    options.splice(index, 1);
+    options.splice(index, 1); // Deletes that spot so it's no longer an option
 
     grid[i][j].bee = true;
   }
@@ -83,14 +81,50 @@ function mousePressed() {
         if (!grid[i][j].bee) {
           var num = floor(random(questions.length));
           console.log("Question:", num + 1);
-          do {
-            ans12 = prompt(questions[num]);
-          } while (!ans12);
+          // do {
+          // ans12 = prompt(questions[num]);
+          // Get the modal
+          var modal = document.getElementById("myModal");
+
+          // Get the button that opens the modal
+          var btn = document.getElementById("submit");
+
+          // Get the <span> element that closes the modal
+          var span = document.getElementsByClassName("close")[0];
+
+          // When the user clicks on the button, open the modal
+          modal.style.display = "block";
+          // When the user clicks on <span> (x), close the modal
+          span.onclick = function() {
+            modal.style.display = "none";
+            ans12 = document.getElementById("ans00").value;
+            // ans12 = prompt("Your Answer");
+            // ans12 = prompt(questions[num]);
+          };
+
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+              ans12 = document.getElementById("ans00").value;
+              // ans12 = prompt("Your Answer");
+              // ans12 = prompt(questions[num]);
+            }
+          };
+          btn.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+              ans12 = document.getElementById("ans00").value;
+            }
+          };
+          // } while (!ans12);
           if (ans12) grid[i][j].reveal();
           console.log("Answer:", ans12);
           questions.splice(num, 1);
-
-          //  TODO: pop up question
+        }
+        if (grid[i][j].bee) {
+          console.log("Hit Mine");
+          grid[i][j].reveal();
         }
       }
     }
@@ -105,4 +139,17 @@ function draw() {
       grid[i][j].show();
     }
   }
+}
+
+hashCode = function(answer) {
+  return s.split("").reduce(function(a, b) {
+    a = (a << 5) - a + b.charCodeAt(0);
+    return a & a;
+  }, 0);
+};
+
+// When the user clicks on <div>, open the popup
+function popup() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
 }
