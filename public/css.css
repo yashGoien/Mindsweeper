@@ -1,0 +1,70 @@
+/* The Modal (background) */
+* {
+  font-family: helvetica;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.scoreCard {
+  float: right;
+  margin: 20px;
+}
+.submitBtn {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  -webkit-box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.3vw;
+  background-color: #3b3e37;
+}
+.login {
+  width: 40%;
+  align-items: center;
+
+  margin: 50px;
+    -webkit-box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+box-shadow: 4px 6px 38px -7px rgba(0,0,0,0.75);
+padding: 20px;
+border-radius: 10px;
+
+}
