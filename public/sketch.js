@@ -73,69 +73,75 @@ function gameOver() {
 }
 
 var ans12;
-var score=0;
-var inc=1;
+var score = 0;
+var inc = 1;
+
 function mousePressed() {
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; j++) {
       if (grid[i][j].contains(mouseX, mouseY)) {
         if (!grid[i][j].bee) {
-          var num = floor(random(questions.length));
-          console.log("Question:", num + 1);
           // do {
-          // ans12 = prompt(questions[num]);
-          // Get the modal
-          var modal = document.getElementById("myModal");
+          var num = floor(random(questions.length));
+          console.log("Question:", num);
+          questions.splice(num, 1);
 
-          // Get the button that opens the modal
-          var btn = document.getElementById("submit");
+          // Get the modal
+          var modal = document.getElementById(`q${num}`);
+
+          // Get the submit button
+          var btn = document.getElementById(`submit${num}`);
 
           // Get the <span> element that closes the modal
-          var span = document.getElementsByClassName("close")[0];
+          var span = document.getElementById(`close${num}`);
 
-          // When the user clicks on the button, open the modal
-          if(document.getElementById('login').style.display=="none"){
-          modal.style.display = "block";
-        }
-          // When the user clicks on <span> (x), close the modal
-          span.onclick = function() {
-            modal.style.display = "none";
-            ans12 = document.getElementById("ans00").value;
-            // ans12 = prompt("Your Answer");
-            // ans12 = prompt(questions[num]);
-          };
+          //open the modal
+          if (document.getElementById("login").style.display == "none") {
+            modal.style.display = "block";
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+              console.log("close");
+              ans12 = document.getElementById(`userAns${num}`).value;
+              console.log(ans12);
+            };
 
-          // When the user clicks anywhere outside of the modal, close it
-          window.onclick = function(event) {
-            if (event.target == modal) {
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            };
+            btn.onclick = function() {
               modal.style.display = "none";
-              ans12 = document.getElementById("ans00").value;
-              // ans12 = prompt("Your Answer");
-              // ans12 = prompt(questions[num]);
+              console.log("submit");
+              ans12 = document.getElementById(`userAns${num}`).value;
+              console.log(ans12);
+            };
+            if (
+              // ans12 &&
+              document.getElementById(`userAns${num}`).value &&
+              document.getElementById("login").style.display == "none"
+            ) {
+              grid[i][j].reveal();
+              score = score + inc;
+              document.getElementById(`userAns${num}`).value = null;
             }
-          };
-          btn.onclick = function(event) {
-            if (event.target == modal) {
-              modal.style.display = "none";
-              ans12 = document.getElementById("ans00").value;
-            }
-          };
-          // } while (!ans12);
-          if (ans12&&(document.getElementById('login').style.display=="none")) 
-            {grid[i][j].reveal();
-              score=score+inc;
-            }if(document.getElementById('login').style.display=="block") {
-  console.log('Login Page')
-}
-          console.log("Answer:", ans12);
-          document.getElementById("score").innerHTML= score;
-          questions.splice(num, 1);
+          }
+          // } while (!ans);
+          if (document.getElementById("login").style.display == "block") {
+            console.log("Login Page");
+          }
+          // console.log("Answer:", ans12);
+          document.getElementById("score").innerHTML = score;
         }
+
+        // hit mine
         if (grid[i][j].bee) {
           console.log("Hit Mine");
-          score=score-5;
-          document.getElementById("score").innerHTML=score;         
           grid[i][j].reveal();
+          score = score - 5;
+          document.getElementById("score").innerHTML = score;
         }
       }
     }
@@ -144,20 +150,19 @@ function mousePressed() {
 
 function draw() {
   background(255);
-//do not display game when user is logged out
-if(document.getElementById('login').style.display=="block") {
-  console.log('Login Page')
-}
-//display game only when user is logged in
-else{
-  for (var i = 0; i < cols; i++) {
-    for (var j = 0; j < rows; j++) {
-      grid[i][j].show();
+  //do not display game when user is logged out
+  if (document.getElementById("login").style.display == "block") {
+    console.log("Login Page");
+  }
+  //display game only when user is logged in
+  else {
+    for (var i = 0; i < cols; i++) {
+      for (var j = 0; j < rows; j++) {
+        grid[i][j].show();
+      }
     }
   }
 }
-}
-
 
 hashCode = function(answer) {
   return s.split("").reduce(function(a, b) {
@@ -166,20 +171,14 @@ hashCode = function(answer) {
   }, 0);
 };
 
-// When the user clicks on <div>, open the popup
-function popup() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
-}
-
 //to push data to the database
-const name=document.getElementById("submitButton");
+const name = document.getElementById("submitButton");
 name.addEventListener("click", saveToList);
 function saveToList() {
-var storeData = new Firebase('https://mindsweeper-92ffc.firebaseio.com/');  
-const email =document.getElementById('email_field').value   
-    storeData.push({
-        score:score,
-        email:email
-    });
-};
+  var storeData = new Firebase("https://mindsweeper-92ffc.firebaseio.com/");
+  const email = document.getElementById("email_field").value;
+  storeData.push({
+    score: score,
+    email: email
+  });
+}

@@ -11,10 +11,21 @@
       }
     </style>
 
-      <link rel="stylesheet" href="css.css" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.9/p5.min.js"
@@ -29,73 +40,173 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.9/addons/p5.sound.min.js"
     ></script>
- <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
-
-
-
   </head>
 
   <body>
-    <!-- <img
-      src="https://cdn.wccftech.com/wp-content/uploads/2018/02/Google.jpg"
-      alt="LOGO"
-      id="logo1"
-    /> -->
-    <!-- <div class="popup" onclick="myFunction()">
-      Click me! <span class="popuptext" id="myPopup">Popup text...</span>
-    </div> -->
-     <div class="login" id="login">
-      <form >
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email_field" placeholder="Enter email" name="email">
+    <div id="game">
+      <div class="scoreCard" style="padding-right:250px">
+        <p id="text"></p>
+        <br /><br />
+        <h2>Current Score: <span id="score"> 0</span></h2>
+        <br /><br />
+        <button class="submitBtn" id="submitButton">Submit</button
+        ><button class="submitBtn" onclick="logout()">Logout</button>
+      </div>
+      <br />
     </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="password_field" placeholder="Enter password" name="pwd">
-    </div>
-  </form>
-    <button class="submitBtn" onclick="login()">Log In</button> 
-    </div>
- <div id="game">
-   <div  class="scoreCard"><p id="text"></p><br><br>
-    <h2 >Current Score: <span id="score" >  0</span></h2><br><br>
-     <button class="submitBtn" id="submitButton">Submit</button><button class="submitBtn" onclick="logout()">Logout</button>
-  </div>
-   <br>
-   
-   
-</div>
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
-        <input type="text" id="ans00" />
-        <button class="btn btn-primary" id="submit">Submit</button>
+
+    <div
+      id="login"
+      style="background-image:url('./refs/wall.jpg'); height: 865px"
+    >
+      <nav
+        class="navbar navbar-fixed-top"
+        style="background-color: rgba(55, 55, 55, .6)"
+      >
+        <h2 style="font-family:Impact; color:aliceblue">Mindsweeper</h2>
+        <a href="./rules.html"> <button class="btn btn-info">Rules</button> </a>
+      </nav>
+      <div class="container" style="padding-top:200px">
+        <div class="row">
+          <div class="col-sm"></div>
+          <div class="col-sm">
+            <div class="col-sm">
+              <div class="login" style="background-color:whitesmoke">
+                <form>
+                  <div class="form-group">
+                    <label for="email" style="padding-right:550px"
+                      >Email:</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email_field"
+                      placeholder="Enter email"
+                      name="email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password_field"
+                      placeholder="Enter password"
+                      name="pwd"
+                    />
+                  </div>
+                </form>
+                <button
+                  class="submitBtn"
+                  onclick="login()"
+                  style="width:234px; height:40px; padding-top:5px"
+                >
+                  Log In
+                </button>
+              </div>
+            </div>
+            <div class="col-sm"></div>
+          </div>
+        </div>
       </div>
     </div>
 
-        <script type="text/javascript" src="sketch.js"></script>
+    <!-- Question 0 -->
+    <div
+      class="modal"
+      tabindex="-1"
+      role="dialog"
+      id="q0"
+      style="padding-left:800px"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              id="close0"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body"><p>printf("%d", num)</p></div>
+          <div class="modal-footer">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Answer Here"
+              id="userAns0"
+            />
+            <button class="btn-warning btn" type="button" id="submit0">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Question 1 -->
+    <div
+      class="modal"
+      tabindex="-1"
+      role="dialog"
+      id="q1"
+      style="padding-left:800px"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              id="close1"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body"><p>printf("%d", num)</p></div>
+          <div class="modal-footer">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Answer Here"
+              id="userAns1"
+            />
+            <button class="btn-warning btn" type="button" id="submit1">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="sketch.js"></script>
 
     <script type="text/javascript" src="cell.js"></script>
 
     <script type="text/javascript" src="ques.js"></script>
-        <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-    
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+
     <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCnPlZWW_IIGJ44o5AsLWrgsPhijapzPJo",
-    authDomain: "mindsweeper-92ffc.firebaseapp.com",
-    databaseURL: "https://mindsweeper-92ffc.firebaseio.com",
-    projectId: "mindsweeper-92ffc",
-    storageBucket: "mindsweeper-92ffc.appspot.com",
-    messagingSenderId: "587834217777"
-  };
-  firebase.initializeApp(config);
-</script>
-<script type="text/javascript" src='login.js'></script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCnPlZWW_IIGJ44o5AsLWrgsPhijapzPJo",
+        authDomain: "mindsweeper-92ffc.firebaseapp.com",
+        databaseURL: "https://mindsweeper-92ffc.firebaseio.com",
+        projectId: "mindsweeper-92ffc",
+        storageBucket: "mindsweeper-92ffc.appspot.com",
+        messagingSenderId: "587834217777"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="login.js"></script>
   </body>
 </html>
