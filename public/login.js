@@ -31,7 +31,36 @@ function login() {
 
       window.alert("Error : " + errorMessage);
     });
+
+  // Timer Starts
+  var seconds = 60;
+  var minutes = 89;
+
+  if ((document.getElementById("login").style.display = "none")) {
+    var myTimer = setInterval(myTimer, 1000);
+
+    function myTimer() {
+      if (seconds === 0) {
+        seconds = 60;
+        miutes = minutes - 1;
+      }
+
+      seconds = seconds - 1;
+      var time = `${minutes} : ${seconds}`;
+
+      console.log("Timer Started");
+      document.getElementById("timer").innerHTML = time;
+
+      //Time Up
+      if (minutes === 0 && seconds === 0) {
+        alert("Times Up");
+        logout();
+        clearInterval(myTimer);
+      }
+    }
+  }
 }
+
 function logout() {
   firebase
     .auth()
@@ -42,4 +71,5 @@ function logout() {
     .catch(function(error) {
       // An error happened.
     });
+  clearInterval(myTimer);
 }

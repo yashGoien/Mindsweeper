@@ -6,6 +6,7 @@ function Cell(i, j, w) {
   this.w = w;
   this.neighborCount = 0;
   this.bee = false;
+  this.flag = 0;
   this.revealed = false;
 }
 
@@ -18,7 +19,6 @@ Cell.prototype.show = function() {
   if (this.revealed) {
     if (this.bee) {
       fill(127);
-
       ellipse(this.x + this.w * 0.5, this.y + this.w * 0.5, this.w * 0.5);
     } else {
       fill(200);
@@ -71,6 +71,17 @@ Cell.prototype.contains = function(x, y) {
 
 Cell.prototype.reveal = function() {
   this.revealed = true;
+  if (this.bee) {
+    if (this.flag === 0) {
+      score = score - 5;
+      this.flag = 1;
+    }
+  } else {
+    if (this.flag === 0) {
+      score = score + inc;
+      this.flag = 1;
+    }
+  }
 
   // if (this.neighborCount == 0) {
   //   // flood fill time
@@ -98,3 +109,9 @@ Cell.prototype.floodFill = function() {
     }
   }
 };
+
+function myTimer() {
+  var time = 5400;
+  time = time - 1;
+  document.getElementById("timer0").innerHTML = time;
+}

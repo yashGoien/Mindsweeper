@@ -46,15 +46,28 @@
 
   <body>
     <div id="game">
-      <div class="scoreCard" style="padding-right:250px">
+      <div class=" card scoreCard" style="background-color:rgb(99, 99, 99)">
         <p id="text"></p>
         <br /><br />
         <h2>Current Score: <span id="score"> 0</span></h2>
         <br /><br />
         <button class="submitBtn" id="submitButton">Submit</button
-        ><button class="submitBtn" onclick="logout()">Logout</button>
+        ><button class="submitBtn" onclick="logout()">Logout</button> <br />
+        <div class="card-body timer">
+          <h4 class="card-title" style="color:mistyrose">Time Left</h4>
+          <hr />
+          <p id="timer" style="font-family:monospace; font-size: 20px"></p>
+        </div>
+        <div class="card-body timer" id="logo">
+          <h2 style="font-family:bebas; color: slategrey">Mindsweeper</h2>
+          <hr />
+          <img
+            src="./refs/helixLogo.png"
+            alt="Helix Logo"
+            style="width:220px; height:88px; margin-bottom:10px"
+          />
+        </div>
       </div>
-      <br />
     </div>
 
     <div

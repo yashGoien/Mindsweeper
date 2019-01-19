@@ -16,7 +16,7 @@ var rows;
 
 var w = 80;
 
-var totalBees = 25;
+var totalBees = 30;
 
 function setup() {
   createCanvas(801, 801);
@@ -81,7 +81,6 @@ function mousePressed() {
     for (var j = 0; j < rows; j++) {
       if (grid[i][j].contains(mouseX, mouseY)) {
         if (!grid[i][j].bee) {
-          // do {
           var num = floor(random(questions.length));
           console.log("Question:", num);
           questions.splice(num, 1);
@@ -98,40 +97,40 @@ function mousePressed() {
           //open the modal
           if (document.getElementById("login").style.display == "none") {
             modal.style.display = "block";
+          }
+
+          btn.onclick = function() {
+            modal.style.display = "none";
+            console.log("submit");
+            ans12 = document.getElementById(`userAns${num}`).value;
+            console.log(ans12);
+
             // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-              modal.style.display = "none";
-              console.log("close");
-              ans12 = document.getElementById(`userAns${num}`).value;
-              console.log(ans12);
-            };
+            // span.onclick = function() {
+            //   modal.style.display = "none";
+            //   console.log("close");
+            //   console.log(ans12);
+            // };
 
             // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
-              }
-            };
-            btn.onclick = function() {
-              modal.style.display = "none";
-              console.log("submit");
-              ans12 = document.getElementById(`userAns${num}`).value;
-              console.log(ans12);
-            };
-            if (
-              // ans12 &&
-              document.getElementById(`userAns${num}`).value &&
-              document.getElementById("login").style.display == "none"
-            ) {
-              grid[i][j].reveal();
-              score = score + inc;
-              document.getElementById(`userAns${num}`).value = null;
-            }
+            // window.onclick = function(event) {
+            //   if (event.target == modal) {
+            //     modal.style.display = "none";
+            //   }
+            // };
+          };
+          if (
+            ans12 &&
+            document.getElementById("login").style.display == "none"
+          ) {
+            grid[i][j].reveal();
+
+            document.getElementById(`userAns${num}`).value = null;
           }
-          // } while (!ans);
-          if (document.getElementById("login").style.display == "block") {
-            console.log("Login Page");
-          }
+
+          // if (document.getElementById("login").style.display == "block") {
+          //   console.log("Login Page");
+          // }
           // console.log("Answer:", ans12);
           document.getElementById("score").innerHTML = score;
         }
@@ -140,7 +139,7 @@ function mousePressed() {
         if (grid[i][j].bee) {
           console.log("Hit Mine");
           grid[i][j].reveal();
-          score = score - 5;
+
           document.getElementById("score").innerHTML = score;
         }
       }
