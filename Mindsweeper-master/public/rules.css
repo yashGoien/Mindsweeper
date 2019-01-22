@@ -1,0 +1,6 @@
+.card:hover,
+.card:focus {
+  animation-name: rules;
+  background-color: rgb(41, 41, 41);
+  color: azure;
+}
