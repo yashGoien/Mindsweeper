@@ -89,65 +89,69 @@
       </div>
     </div>
 
-<!-- The video -->
-<video autoplay muted loop id="myVideo">
-  <source src="./mindsweeper.mp4" type="video/mp4" />
-</video>
 
     <div id="login">
-    <div class="content">
-      <nav
-            class="navbar navbar-fixed-top"
-            style="background-color: rgba(55, 55, 55, .6)"
-          >
-            <h1 style="font-family:Impact; color:aliceblue">Mindsweeper</h1>
-          </nav>
-          <div class="container" style="padding-top:200px">
-            <div class="row">
-                <div class="col-sm" style="margin-left:380px">
-                  <div class="login" style="background-color:rgba(255,255,255,0.9)">
-                    <form>
-                      <div class="form-group">
-                        <img src="./refs/ccsLogo.png" alt="CCSLogo" id="ccsLogo">
-                      </div>
-                      <div class="form-group">
-                        <label for="email"
-                          >Email:</label
-                        >
-                        <input
-                          type="email"
-                          class="form-control"
-                          id="email_field"
-                          placeholder="Enter email"
-                          name="email"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label for="pwd">Password:</label>
-                        <input
-                          type="password"
-                          class="form-control"
-                          id="password_field"
-                          placeholder="Enter password"
-                          name="pwd"
-                        />
-                      </div>
-                    </form>
-                    <button
-                      class="submitBtn"
-                      onclick="login()"
-                      style="width:234px; height:40px; padding:5px; margin-left:10px"
-                    >
-                      Log In
-            <a href="./rules.html"> <button class="submitBtn"
-              style="width:234px; height:40px; padding:5px; margin-left:10px; background-color:rgb(76, 143, 163)"
-              >Rules</button> </a>
-          </button>
+      <!-- The video -->
+      <video autoplay muted loop id="myVideo">
+        <source src="./mindsweeper.mp4" type="video/mp4" />
+      </video>
+
+      <div class="content">
+        <nav
+          class="navbar navbar-fixed-top"
+          style="background-color: rgba(55, 55, 55, .6)"
+        >
+          <h1 style="font-family:Impact; color:aliceblue">Mindsweeper</h1>
+        </nav>
+        <div class="container" style="padding-top:200px; padding-right:200px">
+          <div class="row">
+            <div class="col-sm" style="margin-left:280px; width:600px">
+              <div class="login" style="background-color:rgba(255,255,255,0.9); width:300px">
+                <form>
+                  <div class="form-group">
+                    <img src="./refs/ccsLogo.png" alt="CCSLogo" id="ccsLogo">
                   </div>
-                <div class="col-sm"></div>
+                  <div class="form-group">
+                    <label for="email"
+                      >Email:</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email_field"
+                      placeholder="Enter email"
+                      name="email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password_field"
+                      placeholder="Enter password"
+                      name="pwd"
+                    />
+                  </div>
+                </form>
+                <button
+                  class="submitBtn"
+                  onclick="login()"
+                  style="width:234px; height:40px; padding:5px; margin-left:10px"
+                >
+                  Log In
+                </button>
+                <a href="./rules.html"> <button class="submitBtn"
+                  style="width:234px; height:40px; padding:5px; margin-left:10px; background-color:rgb(76, 143, 163)"
+                  >Rules</button> 
+                </a>
+      
+              </div>
             </div>
+            <div class="col-sm"></div>
           </div>
-    </div>
+        </div>
+      </div>
     </div>
 
 <!-- Question 0 -->
