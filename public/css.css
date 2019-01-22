@@ -71,7 +71,6 @@
 .login {
   width: 40%;
   align-items: center;
-
   margin: 50px;
   -webkit-box-shadow: 4px 6px 38px -7px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 4px 6px 38px -7px rgba(0, 0, 0, 0.75);
@@ -80,22 +79,10 @@
   border-radius: 10px;
 }
 
-.rules:hover,
-.rules:focus {
-  animation-name: rules;
-  background-color: rgb(41, 41, 41);
-  color: azure;
-}
-
 .timer {
   margin-left: 20px;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 30px;
-}
-
-.footer {
-  display: block;
-  background-color: rgb(99, 99, 99);
 }
 
 #logo {
@@ -106,4 +93,26 @@
   margin: auto;
   box-shadow: 4px 6px 8px -7px rgba(0, 0, 0, 0.75);
   border-radius: 10px;
+}
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding-bottom: 180px;
+  padding-left: 1160px;
+}
+
+#ccsLogo {
+  width: 200px;
+  padding-left: 60px;
 }
