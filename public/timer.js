@@ -2,7 +2,7 @@
 var mins = 90;
 
 //calculate the seconds
-var secs = min * 60;
+var secs = 60 * mins;
 
 //countdown function is evoked when page is loaded
 function countdown() {

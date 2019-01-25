@@ -16,7 +16,9 @@ var rows;
 
 var w = 80;
 
-var totalBees = 25;
+var totalBees = 30;
+
+var set;
 
 function setup() {
   createCanvas(801, 801);
@@ -26,6 +28,7 @@ function setup() {
   rows = floor(height / w);
 
   grid = make2DArray(cols, rows);
+  set = Math.floor(Math.random() * 7);
 
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; j++) {
@@ -75,18 +78,22 @@ function gameOver() {
 var ans12;
 var score = 0;
 var inc = 2;
-var num1;
+var num1 = 0;
 
 function mousePressed() {
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; j++) {
       if (grid[i][j].contains(mouseX, mouseY)) {
         if (!grid[i][j].bee) {
-          var num = floor(random(questions.length));
-          questions.splice(num, 1);
+          if (set === 0) var questions = [...questionsSet0];
+          if (set === 1) var questions = [...questionsSet1];
+          if (set === 2) var questions = [...questionsSet2];
+          if (set === 3) var questions = [...questionsSet3];
+          if (set === 4) var questions = [...questionsSet4];
+          if (set === 5) var questions = [...questionsSet5];
+          if (set === 6) var questions = [...questionsSet6];
 
-          num1 = num;
-          console.log("Question:", num);
+          var num = questions[num1];
 
           // Get the modal
           var modal = document.getElementById(`q${num}`);
@@ -111,12 +118,9 @@ function mousePressed() {
                 modal.style.display = "none";
                 console.log("submit");
                 ans12 = document.getElementById(`userAns${num}`).value;
-                console.log(ans12);
                 //Increse score if ans is correct
                 let hashedAns = hashCode(ans12);
-                console.log(hashedAns);
                 if (hashedAns == correctAns[num]) {
-                  console.log(ans12);
                   score = score + inc;
                   document.getElementById("score").innerHTML = score;
                   document.getElementById(`userAns${num}`).value = null;
@@ -128,9 +132,9 @@ function mousePressed() {
             if (document.getElementById("login").style.display == "block") {
               console.log("Login Page");
             }
-            // console.log("Answer:", ans12);
             document.getElementById("score").innerHTML = score;
           }
+          num1++;
         }
 
         // hit mine
@@ -191,81 +195,3 @@ function saveToList() {
 window.onbeforeunload = function() {
   event.preventDefault();
 };
-
-let questions = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  13,
-  14,
-  15,
-  16,
-  17,
-  18,
-  19,
-  20,
-  21,
-  22,
-  23,
-  24,
-  25,
-  26,
-  27,
-  28,
-  29,
-  30,
-  31,
-  32,
-  33,
-  34,
-  35,
-  36,
-  37,
-  38,
-  39,
-  40,
-  41,
-  42,
-  43,
-  44,
-  45,
-  46,
-  47,
-  48,
-  49,
-  50,
-  51,
-  52,
-  53,
-  54,
-  55,
-  56,
-  57,
-  58,
-  59,
-  60,
-  61,
-  62,
-  63,
-  64,
-  65,
-  66,
-  67,
-  68,
-  69,
-  70,
-  71,
-  72,
-  73,
-  74,
-  75
-];
