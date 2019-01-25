@@ -2,6 +2,7 @@
 * {
   font-family: helvetica;
 }
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -18,8 +19,8 @@
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 40% auto; /* 15% from the top and centered */
-  padding: 20px;
+  margin: 8vw auto; /* 15% from the top and centered */
+  padding-right: 4vw;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
@@ -108,11 +109,18 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.2);
   width: 100%;
-  padding-bottom: 60px;
-  padding-left: 860px;
+  padding-bottom: 2vw;
+  padding-left: 47vw;
+
 }
 
 #ccsLogo {
   width: 200px;
   padding-left: 60px;
+}
+@media(max-width: 1027px ) {
+  .content {
+    padding-bottom: 1vw;
+  padding-left: 34vw;
+  }
 }
