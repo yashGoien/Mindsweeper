@@ -10,6 +10,9 @@
         display: none;
         z-index: 50;
       }
+      #thanks {
+        display: none;
+      }
     </style>
 
     <link rel="stylesheet" href="css.css" />
@@ -52,7 +55,7 @@
         <br /><br />
         <h2>Current Score: <span id="score"> 0</span></h2>
         <br /><br />
-        <button class="submitBtn" id="submitButton">Submit</button
+        <button class="submitBtn" id="submitButton" >Submit</button
         ><button class="submitBtn" onclick="logout()">Logout</button> <br />
         <div class="card-body timer">
           <h4 class="card-title" style="color:mistyrose">
@@ -148,7 +151,35 @@
         </div>
       </div>
     </div>
-
+<div id="thanks">
+ <video autoplay muted loop id="myVideo">
+      <source src="./mindsweeper.mp4" type="video/mp4" />
+    </video>
+    <div id="contentThanks">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div
+              class="card "
+              style="width: 70.5rem;margin-top: 120px; background-color: rgba(255, 255, 255, 0.8)"
+            >
+              <div class="card-body">
+                <h5
+                  class="card-title"
+                  style="font-family:monospace; text-align: center"
+                >
+                  Thank You For Playing
+                  <hr />
+                  Results will soon be updated on CCS Facebook handle.
+                  <br /><br />Stay Updated!
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <!-- Question 0 -->
 <div
 class="modal"

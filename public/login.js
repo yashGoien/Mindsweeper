@@ -43,4 +43,5 @@ function logout() {
     .catch(function(error) {
       // An error happened.
     });
+   
 }

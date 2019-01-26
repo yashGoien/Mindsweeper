@@ -113,6 +113,14 @@
   padding-left: 47vw;
 
 }
+.contentThanks {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding-bottom: 2vw;
+
+}
 
 #ccsLogo {
   width: 200px;

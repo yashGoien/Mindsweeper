@@ -41,8 +41,8 @@ function Decrement() {
       alert("time up");
       minutes.value = 0;
       seconds.value = 0;
-      logout();
-      self.location = "./thanks.html";
+      saveToList();
+      
     }
     //if seconds > 0 then seconds is decremented
     else {

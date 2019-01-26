@@ -190,6 +190,10 @@ function saveToList() {
     TimeSecLeft: sec
   });
   logout();
+ document.getElementById("game").style.display = "none";
+ document.getElementById("thanks").style.display = "block";
+
+
 }
 
 window.onbeforeunload = function() {
