@@ -75,6 +75,7 @@ function gameOver() {
   }
 }
 
+
 var ans12;
 var score = 0;
 var inc = 2;
@@ -113,7 +114,13 @@ function mousePressed() {
             //open the modal
             if (document.getElementById("login").style.display == "none") {
               modal.style.display = "block";
-
+              
+              window.onclick = function(event) {
+                if (event.target == modal) {
+                  modal.style.display = "none";
+                }
+              };
+                
               btn.onclick = function() {
                 modal.style.display = "none";
                 console.log("submit");
