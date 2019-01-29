@@ -113,14 +113,11 @@ function mousePressed() {
             //open the modal
             if (document.getElementById("login").style.display == "none" && flag === false) {
               modal.style.display = "block";
-              flag = true
-              
+              flag = true;
+
               window.onclick = function(event) {
-                if (event.target == modal) {
-                  modal.style.display = "none";
-                }
-              };
-                
+              }
+
               btn.onclick = function() {
                 modal.style.display = "none";
                 flag = false;
