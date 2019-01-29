@@ -70,7 +70,7 @@ Cell.prototype.contains = function(x, y) {
 };
 
 Cell.prototype.reveal = function() {
-  this.revealed = true;
+    this.revealed = true;
 
   // if (this.neighborCount == 0) {
   //   // flood fill time

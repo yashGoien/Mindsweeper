@@ -80,6 +80,7 @@ var ans12;
 var score = 0;
 var inc = 2;
 var num1 = 0;
+var flag = false;
 
 function mousePressed() {
   for (var i = 0; i < cols; i++) {
@@ -101,19 +102,18 @@ function mousePressed() {
 
           // Get the submit button
           var btn = document.getElementById(`submit${num}`);
-
-          // Get the <span> element that closes the modal
-          var span = document.getElementById(`close${num}`);
-
           //Open a new question only if the tile is not revealed previously
+
           if (grid[i][j].revealed) {
             modal.style.display = "none";
           } else {
             //Reveal the tile if unrevealed initially
+            if(flag === false)
             grid[i][j].reveal();
             //open the modal
-            if (document.getElementById("login").style.display == "none") {
+            if (document.getElementById("login").style.display == "none" && flag === false) {
               modal.style.display = "block";
+              flag = true
               
               window.onclick = function(event) {
                 if (event.target == modal) {
@@ -123,6 +123,7 @@ function mousePressed() {
                 
               btn.onclick = function() {
                 modal.style.display = "none";
+                flag = false;
                 console.log("submit");
                 ans12 = document.getElementById(`userAns${num}`).value;
                 //Increse score if ans is correct
@@ -145,7 +146,7 @@ function mousePressed() {
         }
 
         // hit mine
-        if (grid[i][j].bee) {
+        if (grid[i][j].bee && flag === false) {
           console.log("Hit Mine");
           if (!grid[i][j].revealed) {
             grid[i][j].reveal();
